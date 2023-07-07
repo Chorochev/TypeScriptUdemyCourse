@@ -23,3 +23,14 @@ const nums2D: number[][] = [
   [4, 5, 6],
   [7, 8, 9],
 ];
+
+// Destructuring
+const [first] = report;
+console.log("first => " + first);
+const [second] = report;
+console.log("second => " + second);
+let [one, two] = report;
+console.log(one + ", " + two);
+// swap variables
+[one, two] = [two, one];
+console.log(one + ", " + two);
