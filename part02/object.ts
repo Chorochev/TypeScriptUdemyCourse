@@ -18,3 +18,21 @@ function logBrthMsgObj(data: {
 }
 
 console.log(logBrthMsgObj(userData));
+
+function logBrthMsgObj2({
+  isBirthday,
+  age,
+  userName,
+}: {
+  isBirthday: boolean;
+  age: number;
+  userName: string;
+}): string {
+  if (isBirthday === true) {
+    return `Congrats ${userName.toUpperCase()}, age ${age + 1}`;
+  } else {
+    return "Too bad";
+  }
+}
+
+console.log(logBrthMsgObj2(userData));
