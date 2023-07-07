@@ -34,3 +34,7 @@ console.log(one + ", " + two);
 // swap variables
 [one, two] = [two, one];
 console.log(one + ", " + two);
+
+let [first1, ...rest] = [1, 2, 3, 4];
+console.log(first1); // outputs 1
+console.log(rest); // outputs [ 2, 3, 4 ]
