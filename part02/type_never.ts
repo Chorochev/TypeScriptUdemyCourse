@@ -19,3 +19,16 @@ console.log(getBrtMsg3(true, 40, "John"));
 
 // const smth : never = undefined; // Type 'undefined' is not assignable to type 'never'.ts(2322)
 // const smth: never = null; // Type 'null' is not assignable to type 'never'.ts(2322)
+
+function getBrtMsg4(
+  isBirthday: boolean,
+  age: number,
+  userName: string
+): string {
+  if (isBirthday === true) {
+    return `Congrats ${userName.toUpperCase()}, age ${age + 1}`;
+  } else if (isBirthday === false) {
+    return "Too bad";
+  }
+  return createError("Error");
+}
