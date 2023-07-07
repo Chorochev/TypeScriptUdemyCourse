@@ -60,3 +60,23 @@ function logBrthMsgObj3({
 }
 
 console.log(logBrthMsgObj3(userData));
+
+// *********************************************
+
+let o: object;
+let O: Object;
+
+// o = 5; // Error
+O = 5; // Ok
+
+// o = ''; // Error
+O = ""; // Ok
+
+// o = true; // Error
+O = true; // Ok
+
+// o = null; // Error, strictNullChecks = true
+// O = null; // Error, strictNullChecks = true
+
+// o = undefined; // Error, strictNullChecks = true
+// O = undefined; // Error, strictNullChecks = true
