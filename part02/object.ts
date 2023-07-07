@@ -3,6 +3,9 @@ const userData = {
   age: 40,
   userName: "John",
   smth: "test",
+  messages: {
+    error: "Error",
+  },
 };
 
 function logBrthMsgObj(data: {
@@ -19,6 +22,7 @@ function logBrthMsgObj(data: {
 
 console.log(logBrthMsgObj(userData));
 
+// Object destructuring
 function logBrthMsgObj2({
   isBirthday,
   age,
@@ -36,3 +40,23 @@ function logBrthMsgObj2({
 }
 
 console.log(logBrthMsgObj2(userData));
+
+function logBrthMsgObj3({
+  isBirthday,
+  age,
+  userName,
+  messages: { error },
+}: {
+  isBirthday: boolean;
+  age: number;
+  userName: string;
+  messages: { error: string };
+}): string {
+  if (isBirthday === true) {
+    return `Congrats ${userName.toUpperCase()}, age ${age + 1}`;
+  } else {
+    return error;
+  }
+}
+
+console.log(logBrthMsgObj3(userData));
