@@ -7,5 +7,5 @@ const userSurname: string = "John";
 age = 40;
 
 if (isBirthday) {
-  console.log(`Congrats ${userSurname}, age ${age + 1}`);
+  console.log(`Congrats ${userSurname.toUpperCase()}, age ${age + 1}`);
 }

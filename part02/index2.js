@@ -6,5 +6,5 @@ var age;
 var userSurname = "John";
 age = 40;
 if (isBirthday) {
-    console.log("Congrats ".concat(userSurname, ", age ").concat(age + 1));
+    console.log("Congrats ".concat(userSurname.toUpperCase(), ", age ").concat(age + 1));
 }
