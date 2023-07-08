@@ -40,3 +40,17 @@ const printReadings2 = (a: number[] | string, b: number) => {
 
 printReadings1(100, 100);
 printReadings2("10000", 100);
+
+console.log("************************");
+
+function checkReadings(readings: { system: number } | { user: number }): void {
+  if ("system" in readings) {
+    console.log("readings.system => " + readings.system);
+  } else {
+    console.log("readings.user => " + readings.user);
+  }
+  console.log(readings); // (parameter) readings: { system: number;} | {user: number;}
+}
+
+checkReadings({ system: 4 });
+checkReadings({ user: 13 });
