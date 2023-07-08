@@ -1,5 +1,5 @@
 const electricityUserData = {
-  readings: 95,
+  readings: 100,
   units: "kWt",
   mode: "double",
 };
@@ -15,7 +15,7 @@ const wRate: number = 2;
 const monthPayments: number[] = [0, 0]; // [electricity, water]
 
 const calculatePayments = (
-  elData: { readings: number; units: string; mode: string },
+  elData: { readings: number; mode: string },
   wData: { readings: number },
   elRate: number,
   wRate: number
