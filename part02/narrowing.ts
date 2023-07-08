@@ -61,8 +61,10 @@ function logValue(x: string | Date) {
   if (x instanceof Date) {
     console.log("Date: " + x.getDate() + ";  FullYear => " + x.getFullYear());
   } else {
-    console.log("number: " + x.trim());
+    console.log("string: '" + x.trim() + "'");
   }
+
+  console.log("'" + x + "'");
 }
 const myDate: Date = new Date();
 logValue("  test  ");
