@@ -25,3 +25,18 @@ function narrowing_PrintMsg2(msg: string[] | number | boolean): void {
 narrowing_PrintMsg2(["msg1", "msg2", "msg3"]);
 narrowing_PrintMsg2(13);
 narrowing_PrintMsg2(true);
+
+console.log("************************");
+
+const printReadings1 = (a: number | string, b: number | boolean) => {
+  if (a === b) {
+    console.log(a, b);
+  }
+};
+
+const printReadings2 = (a: number[] | string, b: number) => {
+  console.log(a.slice(0, 3));
+};
+
+printReadings1(100, 100);
+printReadings2("10000", 100);
