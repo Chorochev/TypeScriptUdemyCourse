@@ -32,16 +32,16 @@ const calculatePayments = (
 calculatePayments(electricityUserData, waterUserData, elRate, wRate);
 
 const sendInvoice = (
-  monthPayments: number[],
+  [electricity, water]: number[],
   electricityUserData: { readings: number; units: string; mode: string },
   waterUserData: { readings: number; units: string }
 ) => {
   const text = `    Hello!
     This month you used ${electricityUserData.readings} ${electricityUserData.units} of electricity
-    It will cost: ${monthPayments[0]}€
+    It will cost: ${electricity}€
 
     This month you used ${waterUserData.readings} ${waterUserData.units} of water
-    It will cost: ${monthPayments[1]}€`;
+    It will cost: ${water}€`;
 
   return text;
 };
