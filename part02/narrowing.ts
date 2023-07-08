@@ -54,3 +54,16 @@ function checkReadings(readings: { system: number } | { user: number }): void {
 
 checkReadings({ system: 4 });
 checkReadings({ user: 13 });
+
+console.log("************************");
+
+function logValue(x: string | Date) {
+  if (x instanceof Date) {
+    console.log("Date: " + x.getDate() + ";  FullYear => " + x.getFullYear());
+  } else {
+    console.log("number: " + x.trim());
+  }
+}
+const myDate: Date = new Date();
+logValue("  test  ");
+logValue(myDate);
