@@ -39,3 +39,21 @@ startServer32(serverConfig32.protocol, serverConfig32.port); // Ok
 //   protocol: "https",
 //   port: 3001,
 // };
+
+const serverConfig33: { protocol: "http" | "https"; port: 3000 | 3001 } = {
+  protocol: "https",
+  port: 3001,
+};
+
+const startServer33: (
+  protocol: "http" | "https",
+  port: 3000 | 3001
+) => string = (
+  protocol: "http" | "https",
+  port: 3000 | 3001
+): "Server start" => {
+  console.log(`Server started on ${protocol}://server:${port}`);
+  return "Server start";
+};
+
+startServer33(serverConfig32.protocol, serverConfig32.port); // Ok
