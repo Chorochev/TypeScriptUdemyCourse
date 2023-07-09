@@ -29,3 +29,22 @@ function startServer2(
 }
 
 startServer2("http", 3001);
+
+function createAnimation(
+  id: string | number,
+  aniName: string,
+  timeFunc: "ease" | "ease-out" | "ease-in" = "ease",
+  duration: number,
+  iterCount: "infinite" | number
+): void {
+  // const elem = document.querySelector(`#${id}`);
+  // elem.style.animation = ""; // Error: 'elem' is possibly 'null'.ts(18047)
+
+  //   const elem = document.querySelector(`#${id}`) as HTMLElement;
+  //   if (elem) {
+  console.log(`${aniName} ${timeFunc} ${duration} ${iterCount}`);
+  //     elem.style.animation = `${aniName} ${timeFunc} ${duration} ${iterCount}`;
+  //   }
+}
+
+createAnimation("id123", "elementName", "ease-in", 5, "infinite");
