@@ -29,3 +29,13 @@ function startServer32(
 }
 
 startServer32(serverConfig32.protocol, serverConfig32.port); // Ok
+
+// // Property 'start' is missing in type
+// const serverConfig33: {
+//   protocol: "http" | "https";
+//   port: 3000 | 3001;
+//   start: () => {};
+// } = {
+//   protocol: "https",
+//   port: 3001,
+// };
