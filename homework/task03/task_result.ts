@@ -54,9 +54,9 @@
   // Товары через запятую, в конце её не должно быть. Пробел после двоеточия, в конце строки его нет.
 
   function printReport(data: TotalWarehouse): string {
-    const items = (Object.keys(data) as (keyof typeof data)[])
-      .filter((p) => data[p] === "empty")
-      .map((p) => p.toString());
+    const items = Object.entries(data)
+      .filter((p) => p[1] === "empty")
+      .map((p) => p[0].toString());
     if (items.length > 0) {
       return `We need this items: ${items.join(", ")}`;
     } else {
