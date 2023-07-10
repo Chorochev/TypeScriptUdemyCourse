@@ -24,3 +24,17 @@
   const someValue: unknown = 10;
   // someValue.method(); // 'someValue' is of type 'unknown'.ts(18046)
 }
+
+{
+  function fetchData(data: unknown): void {
+    if (typeof data === "string") {
+      console.log(data.toUpperCase());
+    }
+    if (typeof data === "number") {
+      console.log(`${data}^2 = ${data * data}`);
+    }
+  }
+
+  fetchData("test");
+  fetchData(5);
+}
