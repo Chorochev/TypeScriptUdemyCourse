@@ -54,3 +54,9 @@
 
   // userFreeze.age = 77; // Cannot assign to 'age' because it is a read-only property.ts(2540)
 }
+
+{
+  const basicPorts: ReadonlyArray<number> = [3000, 3001, 3002];
+  // basicPorts[0] = 5; // Index signature in type 'readonly number[]' only permits reading.ts(2542)
+  // basicPorts.push(5); // Property 'push' does not exist on type 'readonly number[]'.ts(2339)
+}
