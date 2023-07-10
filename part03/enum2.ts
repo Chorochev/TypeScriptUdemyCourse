@@ -8,6 +8,7 @@
     BOTTOM,
   }
 
+  // !!! Do not use const enums at all.
   const enum TimingFunc {
     EASE = "ease",
     EASE_IN = "ease-in",
