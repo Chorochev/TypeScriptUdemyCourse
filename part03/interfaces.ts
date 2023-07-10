@@ -39,3 +39,21 @@ const serverConfig3: IConfigWithRole3 = {
   role: "admin",
   log: (msg: string): void => console.log(msg),
 };
+
+// *******************************************
+type StartFunction2 = (
+  protocol: "http" | "https",
+  port: 3000 | 3001,
+  log: Function // Not recomended
+) => string;
+
+const startServerNew2: StartFunction2 = (
+  protocol: "http" | "https",
+  port: 3000 | 3001,
+  log: Function
+): "Server start" => {
+  log(`Server started on ${protocol}://server:${port}`);
+  return "Server start";
+};
+
+startServerNew2(serverConfig3.protocol, serverConfig3.port, serverConfig3.log);
