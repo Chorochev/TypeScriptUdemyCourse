@@ -25,3 +25,17 @@ const serverConfig2: IConfigWithRole = {
   role: "admin",
   test: "Hello world",
 };
+
+// *******************************************
+// methods
+
+interface IConfigWithRole3 extends IConfig, IRole {
+  log: (msg: string) => void;
+}
+
+const serverConfig3: IConfigWithRole3 = {
+  protocol: "https",
+  port: 3001,
+  role: "admin",
+  log: (msg: string): void => console.log(msg),
+};
