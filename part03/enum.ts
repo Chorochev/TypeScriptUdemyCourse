@@ -3,7 +3,7 @@
 
   function frame(elem: string, dir: string, tFunc: string): void {
     if (dir === RIGHT) {
-      console.log(`elem=> ${elem}, dir=> ${dir}, tFunc=>${tFunc}`);
+      console.log(`elem=> ${elem}, dir=> ${dir}, tFunc=> ${tFunc}`);
     } else {
       console.log("...");
     }
@@ -19,12 +19,18 @@
     BOTTOM,
   }
 
-  function frame(elem: string, dir: Directions, tFunc: string): void {
+  enum TimingFunc {
+    EASE = 1,
+    EASE_IN = 10,
+    LINEAR = 30,
+  }
+
+  function frame(elem: string, dir: Directions, tFunc: TimingFunc): void {
     if (dir === Directions.RIGHT) {
-      console.log(`elem=> ${elem}, dir=> ${dir}, tFunc=>${tFunc}`);
+      console.log(`elem=> ${elem}, dir=> ${dir}, tFunc=> ${tFunc}`);
     } else {
       console.log("...");
     }
   }
-  frame("id", Directions.RIGHT, "fast!");
+  frame("id", Directions.RIGHT, TimingFunc.LINEAR);
 }
