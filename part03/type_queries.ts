@@ -24,6 +24,17 @@
   const PI = 3.14;
   let PIClone: typeof PI;
 
-  PI.toFixed();
-  // PIClone.toFixed();
+  function showPI(num: typeof PI): void {
+    console.log(`PI => ${num}`);
+  }
+
+  function showPIClone(num: typeof PIClone): void {
+    console.log(`PIClone => ${num}`);
+  }
+
+  showPI(PI);
+  showPIClone(PI);
+  // showPIClone(PIClone); // Variable 'PIClone' is used before being assigned.ts(2454)
+  PIClone = 3.14;
+  showPIClone(PIClone); // Ok
 }
