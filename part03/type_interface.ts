@@ -13,4 +13,10 @@
 
   const userObj: IUserData = JSON.parse(userDate);
   console.log(userObj.userNameData);
+
+  let isOkey = true;
+  let movement: boolean | string;
+  if (isOkey) {
+    movement = "moving";
+  }
 }
