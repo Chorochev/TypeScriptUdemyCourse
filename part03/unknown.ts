@@ -61,3 +61,26 @@
 
   transferDate(data);
 }
+
+{
+  try {
+    if (1) {
+      throw new Error("custom error");
+    }
+  } catch (e) {
+    // var e: unknown
+    console.log(typeof e);
+    if (e instanceof Error) {
+      console.log("e.message => " + e.message);
+    } else if (typeof e === "string") {
+      console.log("e => " + e.toUpperCase());
+    }
+  }
+}
+
+{
+  type T0 = any | unknown; // type T0 = any
+  type T1 = number | unknown; // type T1 = unknown
+  type T2 = any & unknown; // type T2 = any
+  type T3 = number & unknown; // type T3 = number
+}
