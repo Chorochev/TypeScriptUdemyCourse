@@ -20,3 +20,13 @@ const startNewServer2 = (config: IBasicConfig2): "Server started" => {
 
 startNewServer2(serverNewConfig2);
 startNewServer2(backupNewConfig2);
+
+// Extension of interface
+interface IBasicConfigExt {
+  protocol: string;
+  port1: number;
+}
+
+interface IBasicConfigExt {
+  port2: number;
+}
