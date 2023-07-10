@@ -45,8 +45,15 @@
 
   enum TimingFunc {
     EASE = "ease",
-    EASE_IN = "ease_in",
+    EASE_IN = `${EASE}-in`,
+    // EASE_IN = "ease-in",
     LINEAR = "linear",
+  }
+
+  enum TimingFuncN {
+    EASE = 1,
+    EASE_IN = 1,
+    LINEAR = EASE * 2,
   }
 
   function frame(elem: string, dir: Directions, tFunc: TimingFunc): void {
@@ -56,5 +63,5 @@
       console.log("...");
     }
   }
-  frame("id", Directions.RIGHT, TimingFunc.LINEAR);
+  frame("id", Directions.RIGHT, TimingFunc.EASE_IN);
 }
