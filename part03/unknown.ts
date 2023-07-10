@@ -19,3 +19,8 @@
   // Runtime error
   // someValue.method(); // TypeError: someValue.method is not a function
 }
+
+{
+  const someValue: unknown = 10;
+  // someValue.method(); // 'someValue' is of type 'unknown'.ts(18046)
+}
