@@ -13,3 +13,9 @@
   let data: string[] = ["str1", "str2"]; // Ok
   console.log(data.find((e) => e)); // Ok
 }
+
+{
+  const someValue: any = 10;
+  // Runtime error
+  // someValue.method(); // TypeError: someValue.method is not a function
+}
