@@ -16,3 +16,16 @@ const backupConfig: Config = {
   protocol: "http",
   port: 3000,
 };
+
+type Role = {
+  role: string;
+};
+
+// Intersection
+type ConfigWithRole = Config & Role;
+
+const serverConfigWithRole: ConfigWithRole = {
+  protocol: "http",
+  port: 3000,
+  role: "admin",
+};
