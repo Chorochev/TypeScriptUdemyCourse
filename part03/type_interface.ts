@@ -2,6 +2,8 @@
   let salary; // let salary: any
   salary = 500; // let salary: any
 
+  let salary2 = 500; // let salary2: number
+
   interface IUserData {
     isBirthdayData: boolean;
     ageDate: number;
