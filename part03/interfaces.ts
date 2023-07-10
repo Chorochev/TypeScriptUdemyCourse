@@ -50,10 +50,28 @@ type StartFunction2 = (
 const startServerNew2: StartFunction2 = (
   protocol: "http" | "https",
   port: 3000 | 3001,
-  log: Function
+  log: Function // Not recomended
 ): "Server start" => {
   log(`Server started on ${protocol}://server:${port}`);
   return "Server start";
 };
 
 startServerNew2(serverConfig3.protocol, serverConfig3.port, serverConfig3.log);
+
+// *******************************************
+type StartFunction3 = (
+  protocol: "http" | "https",
+  port: 3000 | 3001,
+  log: (msg: string) => void // recomended
+) => string;
+
+const startServerNew3: StartFunction3 = (
+  protocol: "http" | "https",
+  port: 3000 | 3001,
+  log: (msg: string) => void // recomended
+): "Server start" => {
+  log(`Server started on ${protocol}://server:${port}`);
+  return "Server start";
+};
+
+startServerNew3(serverConfig3.protocol, serverConfig3.port, serverConfig3.log);
