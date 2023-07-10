@@ -38,3 +38,26 @@
   fetchData("test");
   fetchData(5);
 }
+
+{
+  const userDate =
+    '{"isBirthdayData": true, "ageDate": 40, "userNameData": "John"}';
+
+  function safeParse(s: string): unknown {
+    return JSON.parse(s);
+  }
+
+  const data = safeParse(userDate);
+
+  function transferDate(d: unknown): void {
+    if (typeof d === "string") {
+      console.log(d.toUpperCase());
+    } else if (typeof d === "object" && d) {
+      console.log(data);
+    } else {
+      console.log("Some error...");
+    }
+  }
+
+  transferDate(data);
+}
