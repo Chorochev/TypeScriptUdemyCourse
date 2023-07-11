@@ -31,12 +31,14 @@
     // Создать функционал, что если marks - это массив, то "сложить" все эелементы в одну строку и поместить в marksLog
     if (Array.isArray(data.marks)) {
       marksLog = data.marks.join(", ");
-    }
-    // Если это строка, то просто поместить её в marksLog
-    if (typeof data.marks === "string") {
+    } else if (typeof data.marks === "string") {
+      // Если это строка, то просто поместить её в marksLog
       marksLog = data.marks;
+    } else {
+      // Если что-то другое - то marksLog = "Unsupported type of marks"
+      marksLog = "Unsupported type of marks";
     }
-    // Если что-то другое - то marksLog = "Unsupported type of marks"
+
     // Не допускайте any!
     console.log(`Media ${data.name}${data.format} is ${data.type}
       Marks: ${marksLog}
@@ -45,7 +47,7 @@
     return "Media started";
   }
 
-  const mediaDate: IPlayMediaData = {
+  const mediaDate1: IPlayMediaData = {
     name: "WoW",
     format: EFormatsOfMedia.FLV,
     type: ETypesOfMedia.AUDIO,
@@ -53,7 +55,16 @@
     marks: ["4:30", "5:40"],
   };
 
-  playMedia(mediaDate);
-  mediaDate.marks = "test string";
-  playMedia(mediaDate);
+  const mediaDate2: IPlayMediaData = {
+    name: "Well",
+    format: EFormatsOfMedia.MOV,
+    type: ETypesOfMedia.VIDEO,
+  };
+
+  playMedia(mediaDate1);
+  mediaDate1.marks = "test string";
+  playMedia(mediaDate1);
+  mediaDate1.marks = 100;
+  playMedia(mediaDate1);
+  playMedia(mediaDate2);
 }
