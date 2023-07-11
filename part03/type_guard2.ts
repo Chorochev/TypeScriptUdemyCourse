@@ -38,10 +38,12 @@
       console.log("Car");
       console.log(vehicle.engine);
       console.log(vehicle.wheels);
-    } else {
+    } else if (isShip(vehicle)) {
       console.log("Ship");
       console.log(vehicle.engine);
       console.log(vehicle.sail);
+    } else {
+      vehicle; // (parameter) vehicle: never
     }
   }
 
@@ -51,6 +53,10 @@
 
   function isCar2(car: ICar | IShip): car is ICar {
     return (car as ICar).wheels !== undefined;
+  }
+
+  function isShip(car: ICar | IShip): car is IShip {
+    return (car as IShip).sail !== undefined;
   }
 
   //   repairVehicle({})
