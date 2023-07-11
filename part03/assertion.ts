@@ -1,6 +1,6 @@
 {
   const fetchData = (url: string, method: "GET" | "POST"): void => {
-    console.log("Retched!");
+    console.log(method);
   };
 
   const reqOption = {
@@ -17,4 +17,17 @@
 
   const methodStr: string = "GET";
   // fetchData(reqOption.url, methodStr); // Argument of type 'string' is not assignable to parameter of type '"GET" | "POST"'.ts(2345)
+}
+
+{
+  const fetchData = (url: string, method: "GET" | "POST"): void => {
+    console.log(method);
+  };
+
+  const reqOption = {
+    url: "https://someurl.com",
+    method: "GET",
+  } as const; // !!!
+
+  fetchData(reqOption.url, reqOption.method); // Ok
 }
