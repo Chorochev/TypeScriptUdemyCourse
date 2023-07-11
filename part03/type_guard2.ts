@@ -3,6 +3,10 @@
     return typeof n === "number";
   }
 
+  function isNumber2(n: unknown): n is number {
+    return typeof n === "number";
+  }
+
   function printMsg(msg: string[] | number | boolean): void {
     if (Array.isArray(msg)) {
       msg.forEach((m) => console.log(m)); // (parameter) msg: string[]
