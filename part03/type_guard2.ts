@@ -21,3 +21,37 @@
   printMsg(true);
   printMsg(["test1", "test2"]);
 }
+
+{
+  interface ICar {
+    engine: string;
+    wheels: number;
+  }
+
+  interface IShip {
+    engine: string;
+    sail: string;
+  }
+
+  function repairVehicle(vehicle: ICar | IShip) {
+    if (isCar(vehicle)) {
+      console.log("Car");
+      console.log(vehicle.engine);
+      console.log(vehicle.wheels);
+    } else {
+      console.log("Ship");
+      console.log(vehicle.engine);
+      console.log(vehicle.sail);
+    }
+  }
+
+  function isCar(car: ICar | IShip): car is ICar {
+    return "wheels" in car;
+  }
+
+  function isCar2(car: ICar | IShip): car is ICar {
+    return (car as ICar).wheels !== undefined;
+  }
+
+  //   repairVehicle({})
+}
