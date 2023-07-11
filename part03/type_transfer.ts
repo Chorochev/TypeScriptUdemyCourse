@@ -30,8 +30,20 @@
     projectBudget: number;
   }
 
-  const mainProject: Project = {
+  const mainProject1: Project = {
     ...department,
     projectBudget: 50000,
   };
+  console.log(mainProject1.name);
+  // console.log(mainProject1.budget); // Property 'budget' does not exist on type 'Project'.ts(2339)
+  console.log(mainProject1.projectBudget);
+
+  const mainProject2 = {
+    ...department,
+    projectBudget: 50000,
+  };
+
+  console.log(mainProject2.name);
+  console.log(mainProject2.budget); // Ok
+  console.log(mainProject2.projectBudget);
 }
