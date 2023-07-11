@@ -29,7 +29,13 @@
   function playMedia(data: IPlayMediaData): string {
     let marksLog;
     // Создать функционал, что если marks - это массив, то "сложить" все эелементы в одну строку и поместить в marksLog
+    if (Array.isArray(data.marks)) {
+      marksLog = data.marks.join(", ");
+    }
     // Если это строка, то просто поместить её в marksLog
+    if (typeof data.marks === "string") {
+      marksLog = data.marks;
+    }
     // Если что-то другое - то marksLog = "Unsupported type of marks"
     // Не допускайте any!
     console.log(`Media ${data.name}${data.format} is ${data.type}
@@ -39,11 +45,15 @@
     return "Media started";
   }
 
-  playMedia({
+  const mediaDate: IPlayMediaData = {
     name: "WoW",
     format: EFormatsOfMedia.FLV,
     type: ETypesOfMedia.AUDIO,
     subtitles: "hmhmhm hmhmhm doh",
     marks: ["4:30", "5:40"],
-  });
+  };
+
+  playMedia(mediaDate);
+  mediaDate.marks = "test string";
+  playMedia(mediaDate);
 }
