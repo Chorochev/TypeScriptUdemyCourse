@@ -10,6 +10,8 @@
 
   fetchData("qqq", "GET");
   // fetchData(reqOption.url, reqOption.method); // Argument of type 'string' is not assignable to parameter of type '"GET" | "POST"'.ts(2345)
+  fetchData(reqOption.url, reqOption.method as "GET"); // Ok
+
   const method = "GET";
   fetchData(reqOption.url, method); // Ok
 
