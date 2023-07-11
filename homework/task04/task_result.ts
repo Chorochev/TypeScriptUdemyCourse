@@ -1,11 +1,11 @@
 {
   // Перечисление с названием TypesOfMedia, которое включает строчные типы video, audio
-  enum TypesOfMedia {
+  enum ETypesOfMedia {
     VIDEO = "video",
     AUDIO = "audio",
   }
   // Перечисление с названием FormatsOfMedia, которое включает строчные видео-форматы: .mp4, .mov, .mkv, .flv, .webM
-  enum FormatsOfMedia {
+  enum EFormatsOfMedia {
     MP4 = ".mp4",
     MOV = ".mov",
     MKV = ".mkv",
@@ -18,6 +18,14 @@
   // format = один из перечисления выше
   // subtitles - необязательное поле типа строка
   // marks - необязательное поле неизвестного типа
+  interface IPlayMediaData {
+    name: string;
+    type: ETypesOfMedia;
+    format: EFormatsOfMedia;
+    subtitles?: string;
+    marks?: unknown;
+  }
+
   // function playMedia(
   // 	{ name, type, format, subtitles, marks }: интерфейс = {
   // 		name: "example",
