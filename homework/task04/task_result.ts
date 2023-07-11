@@ -39,11 +39,11 @@
     return "Media started";
   }
 
-  // playMedia({
-  // 	name: "WoW",
-  // 	format: один из форматов,
-  // 	type: один из типов,
-  // 	subtitles: "hmhmhm hmhmhm doh",
-  // 	marks: ["4:30", "5:40"],
-  // });
+  playMedia({
+    name: "WoW",
+    format: EFormatsOfMedia.FLV,
+    type: ETypesOfMedia.AUDIO,
+    subtitles: "hmhmhm hmhmhm doh",
+    marks: ["4:30", "5:40"],
+  });
 }
