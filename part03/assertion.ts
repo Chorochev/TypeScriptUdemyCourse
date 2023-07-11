@@ -44,3 +44,17 @@
 
   fetchData(reqOption.url, reqOption.method); // Ok
 }
+
+{
+  const fetchData = (url: string, method: "GET" | "POST"): void => {
+    console.log(method);
+  };
+
+  const reqOption = {
+    url: "https://someurl.com",
+    method: "GET", // !!!
+  };
+
+  fetchData(reqOption.url, reqOption.method as "GET"); // Ok
+  fetchData(reqOption.url, <"GET">reqOption.method); // Ok
+}
