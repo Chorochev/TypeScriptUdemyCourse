@@ -1,6 +1,17 @@
 {
   // Перечисление с названием TypesOfMedia, которое включает строчные типы video, audio
+  enum TypesOfMedia {
+    VIDEO = "video",
+    AUDIO = "audio",
+  }
   // Перечисление с названием FormatsOfMedia, которое включает строчные видео-форматы: .mp4, .mov, .mkv, .flv, .webM
+  enum FormatsOfMedia {
+    MP4 = ".mp4",
+    MOV = ".mov",
+    MKV = ".mkv",
+    FLV = ".flv",
+    WEBM = ".webM",
+  }
   // Описание интерфейса, в котором:
   // name - строка
   // type - один из перечисления выше
