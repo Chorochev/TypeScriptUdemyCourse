@@ -16,3 +16,16 @@
   func1("false");
   //   func1("something"); // Error
 }
+
+{
+  function func1(item: "true" | "false"): string {
+    if (item === "false") {
+      return "(parameter) item: false";
+    } else if (item === "true") {
+      return "(parameter) item: true";
+    } else {
+      return "(parameter) item: never";
+    }
+    return "???";
+  }
+}
