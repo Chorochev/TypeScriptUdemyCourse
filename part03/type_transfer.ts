@@ -25,15 +25,17 @@
     budget: 50000,
   };
 
-  interface Project {
+  interface IProject {
     name: string;
     projectBudget: number;
   }
 
-  const mainProject1: Project = {
+  const mainProject1: IProject = {
     ...department,
     projectBudget: 50000,
   };
+  console.log("mainProject1");
+  console.log(mainProject1); // { name: 'web-dev', budget: 50000, projectBudget: 50000 }
   console.log(mainProject1.name);
   // console.log(mainProject1.budget); // Property 'budget' does not exist on type 'Project'.ts(2339)
   console.log(mainProject1.projectBudget);
@@ -42,8 +44,40 @@
     ...department,
     projectBudget: 50000,
   };
-
+  console.log("mainProject2");
+  console.log(mainProject2); // { name: 'web-dev', budget: 50000, projectBudget: 50000 }
   console.log(mainProject2.name);
   console.log(mainProject2.budget); // Ok
   console.log(mainProject2.projectBudget);
+}
+
+{
+  interface IDepartment {
+    name: string;
+    budget: number;
+  }
+
+  const department: IDepartment = {
+    name: "web-dev",
+    budget: 50000,
+  };
+
+  interface IProject {
+    name: string;
+    projectBudget: number;
+  }
+
+  function transformDepartment(
+    department: IDepartment,
+    amount: number
+  ): IProject {
+    return {
+      name: department.name,
+      projectBudget: amount,
+    };
+  }
+
+  const mainProject: IProject = transformDepartment(department, 400);
+  console.log("mainProject");
+  console.log(mainProject); // { name: 'web-dev', projectBudget: 400 }
 }
