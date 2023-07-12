@@ -95,3 +95,25 @@
     },
   };
 }
+
+{
+  const depositMoney = <T extends number | string>(amount: T): T => {
+    console.log(`req to server with amount: ${amount}`);
+    return amount;
+  };
+
+  depositMoney(500); // Ok
+  depositMoney("300"); // Ok
+  // depositMoney(true); // Argument of type 'boolean' is not assignable to parameter of type 'string | number'.ts(2345)
+}
+
+{
+  const depositMoney = (amount: number | string): number | string => {
+    console.log(`req to server with amount: ${amount}`);
+    return amount;
+  };
+
+  depositMoney(500); // Ok
+  depositMoney("300"); // Ok
+  // depositMoney(true); // Argument of type 'boolean' is not assignable to parameter of type 'string | number'.ts(2345)
+}
