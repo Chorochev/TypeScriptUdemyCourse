@@ -1,4 +1,10 @@
 {
+  // Standart noyifications
+  // T0, T1, T2, T3 ...
+  // T, S, U, V
+  // K/V or Key/Value
+  // P — Property
+
   function simpleFunc(
     data: number | string | boolean
   ): number | string | boolean {
