@@ -21,4 +21,8 @@
   let val13 = genericFunc([1, 2, 3, 4]); // let val13: number[]
   let arr11: number[] = [1, 2, 3, 4]; // let arr11: number[]
   let val14 = genericFunc(arr1); // let val13: number[]
+
+  const num = 10;
+  const val21 = genericFunc<number>(num); // const val21: number
+  // const val22 = genericFunc<number>("num"); // Error: Argument of type 'string' is not assignable to parameter of type 'number'.ts(2345)
 }
