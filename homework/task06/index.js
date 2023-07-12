@@ -13,11 +13,11 @@ document.querySelectorAll(".btn").forEach(function (item) {
     return item.addEventListener("click", function (e) {
         e.preventDefault(); // submit off
         collectData();
-        if (validateFormData(formData) === false) {
-            alert("Please, complete all fields!");
+        if (validateFormData(formData)) {
+            checkFormData(formData);
         }
         else {
-            checkFormData(formData);
+            alert("Please, complete all fields!");
         }
         console.log(formData);
     });
@@ -63,15 +63,14 @@ function validateFormData(data) {
 }
 function checkFormData(data) {
     var _a;
-    // const email = data.email;
     var emails = ["example@gmail.com", "example@ex.com", "admin@gmail.com"];
     var conditional = emails.filter(function (e) { return e == data.email; }).length;
-    // Если email совпадает хотя бы с одним из массива
     if (conditional > 0) {
         console.log("This email is already exist");
     }
     else {
         console.log("Posting data...");
+        console.log(data);
         alert("Everything alright.");
         (_a = document.querySelector("form")) === null || _a === void 0 ? void 0 : _a.submit();
     }

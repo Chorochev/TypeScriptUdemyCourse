@@ -22,10 +22,10 @@ document.querySelectorAll(".btn").forEach((item) =>
   item.addEventListener("click", (e) => {
     e.preventDefault(); // submit off
     collectData();
-    if (validateFormData(formData) === false) {
-      alert("Please, complete all fields!");
-    } else {
+    if (validateFormData(formData)) {
       checkFormData(formData);
+    } else {
+      alert("Please, complete all fields!");
     }
     console.log(formData);
   })
@@ -79,6 +79,7 @@ function checkFormData(data: IFormData) {
     console.log("This email is already exist");
   } else {
     console.log("Posting data...");
+    console.log(data);
     alert("Everything alright.");
     document.querySelector("form")?.submit();
   }
