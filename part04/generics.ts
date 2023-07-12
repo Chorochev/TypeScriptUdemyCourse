@@ -25,4 +25,25 @@
   const num = 10;
   const val21 = genericFunc<number>(num); // const val21: number
   // const val22 = genericFunc<number>("num"); // Error: Argument of type 'string' is not assignable to parameter of type 'number'.ts(2345)
+
+  interface PrintUK {
+    design: number;
+  }
+  interface PrintES {
+    design: string;
+  }
+
+  interface Print<T> {
+    design: T;
+  }
+
+  const somePrint: Print<string> = {
+    // design: 10 // Error
+    design: "ten", //(property) Print<string>.design: string
+  };
+
+  const someOtherPrint: Print<number> = {
+    design: 10, // (property) Print<number>.design: number
+    // design: "ten", // Error
+  };
 }
