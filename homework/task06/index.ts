@@ -1,4 +1,11 @@
-const formData = {
+interface IFormData {
+  email: string;
+  title: string;
+  text: string;
+  checkbox: boolean | undefined;
+}
+
+const formData: IFormData = {
   email: "",
   title: "",
   text: "",
@@ -13,28 +20,66 @@ const formData = {
 
 document.querySelectorAll(".btn").forEach((item) =>
   item.addEventListener("click", (e) => {
-    alert("Test!");
+    e.preventDefault(); // submit off
+    collectData();
+    if (validateFormData(formData) === false) {
+      alert("Please, complete all fields!");
+    } else {
+      checkFormData(formData);
+    }
+    console.log(formData);
   })
 );
 
-// function validateFormData(data) {
-//   // Если каждое из свойств объекта data правдиво...
-//   if ("condition") {
-//     return true;
-//   } else {
-//     console.log("Please, complete all fields");
-//     return false;
-//   }
-// }
+function collectData(): void {
+  formData.email = getValueFromInput("email");
+  formData.title = getValueFromInput("title");
+  formData.text = getValueFromInput("text");
+  formData.checkbox = getValueFromCheckbox("checkbox");
+}
 
-// function checkFormData(data) {
-//   const { email } = data;
-//   const emails = ["example@gmail.com", "example@ex.com", "admin@gmail.com"];
+function getValueFromInput(id: string): string {
+  const element = document.getElementById(id) as HTMLInputElement;
+  if (element === null) {
+    console.error(`Element "${id} is missing."`);
+    return "";
+  } else {
+    return element.value;
+  }
+}
 
-//   // Если email совпадает хотя бы с одним из массива
-//   if ("condition") {
-//     console.log("This email is already exist");
-//   } else {
-//     console.log("Posting data...");
-//   }
-// }
+function getValueFromCheckbox(id: string): boolean | undefined {
+  const element = document.getElementById(id) as HTMLInputElement;
+  if (element === null) {
+    console.error(`Element "${id} is missing."`);
+    return undefined;
+  } else {
+    return element.checked;
+  }
+}
+
+function validateFormData(data: IFormData) {
+  const conditional =
+    data.email.trim() !== "" &&
+    data.text.trim() !== "" &&
+    data.title.trim() !== "" &&
+    data.checkbox !== undefined;
+  if (conditional) {
+    return true;
+  } else {
+    console.log("Please, complete all fields");
+    return false;
+  }
+}
+
+function checkFormData(data: IFormData) {
+  const emails = ["example@gmail.com", "example@ex.com", "admin@gmail.com"];
+  const conditional = emails.filter((e) => e == data.email).length;
+  if (conditional > 0) {
+    console.log("This email is already exist");
+  } else {
+    console.log("Posting data...");
+    alert("Everything alright.");
+    document.querySelector("form")?.submit();
+  }
+}
