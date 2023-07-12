@@ -50,4 +50,13 @@
       return data;
     },
   };
+
+  function processing<T>(data: T): T {
+    return data;
+  }
+
+  // or
+  const saver4: IDataSarver = {
+    processing: processing,
+  };
 }
