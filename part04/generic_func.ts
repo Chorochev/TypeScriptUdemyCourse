@@ -1,3 +1,5 @@
+// Generic function
+
 {
   function genericFunc<T, S>(data: T, option: S): T {
     return data;
@@ -59,4 +61,18 @@
   const saver4: IDataSarver = {
     processing: processing,
   };
+}
+
+{
+  function processing<T>(data: T): T {
+    return data;
+  }
+
+  let newFunc: <T>(data: T) => T = processing;
+
+  interface IDataSaver {
+    num: number;
+    // processing: processing; // Error
+    processing: typeof processing; // Ok
+  }
 }
