@@ -68,11 +68,20 @@
     return data;
   }
 
-  let newFunc: <T>(data: T) => T = processing;
+  let newFunc1: <T>(data: T) => T = processing;
 
   interface IDataSaver {
     num: number;
     // processing: processing; // Error
     processing: typeof processing; // Ok
+  }
+  // ------------------------------
+  interface IProcessingFn {
+    <T>(data: T): T;
+  }
+  let newFunc2: IProcessingFn = processing;
+
+  interface IDataSaver2 {
+    processing: IProcessingFn; // Ok
   }
 }
