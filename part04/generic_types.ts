@@ -54,3 +54,44 @@
     parents: "",
   };
 }
+
+{
+  // Generic constraints
+  interface IParentsOfUser {
+    mother: string;
+    father: string;
+  }
+
+  // Generic constraints
+  interface User1<ParentsData extends IParentsOfUser> {
+    login: string;
+    age: number;
+    parents: ParentsData;
+  }
+
+  const user1: User1<{ mother: string; father: string; isMarried: boolean }> = {
+    login: "admin",
+    age: 55,
+    parents: {
+      mother: "Anna",
+      father: "Max",
+      isMarried: true, // Ok
+    },
+  };
+
+  interface User2 {
+    login: string;
+    age: number;
+    parents: IParentsOfUser;
+  }
+
+  const user2: User2 = {
+    login: "admin",
+    age: 55,
+    parents: {
+      mother: "Anna",
+      father: "no data",
+      // married: true, // Error
+    },
+  };
+}
