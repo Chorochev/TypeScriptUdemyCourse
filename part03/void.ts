@@ -5,6 +5,16 @@
     return "str";
   };
 
+  function myfumc2(): void {
+    // Error
+    // return true; // Type 'boolean' is not assignable to type 'void'.ts(2322)
+  }
+
+  const myFunc3 = function (): void {
+    // Error
+    // return true; // Type 'boolean' is not assignable to type 'void'.ts(2322)
+  };
+
   const s = retString(); // const s: void
   console.log(s); // str
 
