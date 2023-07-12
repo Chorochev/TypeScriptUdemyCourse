@@ -26,3 +26,28 @@
 
   const val1 = genericFunc<number, string>(100, "test", [1, 2, 3, 4]);
 }
+
+{
+  interface IDataSarver {
+    processing: <T>(data: T) => T;
+  }
+
+  const saver1: IDataSarver = {
+    processing(data) {
+      console.log(data);
+      return data;
+    },
+  };
+  // or
+  const saver2: IDataSarver = {
+    processing: <T>(data: T) => {
+      return data;
+    },
+  };
+  // or
+  const saver3: IDataSarver = {
+    processing: (data) => {
+      return data;
+    },
+  };
+}
