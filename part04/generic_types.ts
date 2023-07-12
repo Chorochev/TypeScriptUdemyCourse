@@ -32,3 +32,25 @@
   console.log(data1); // [ 1, 5 ]
   console.log(data2); // [ 1, 5 ]
 }
+
+{
+  interface User<ParentsData> {
+    login: string;
+    age: number;
+    parents: ParentsData;
+  }
+  const user1: User<{ mother: string; father: string }> = {
+    login: "admin",
+    age: 55,
+    parents: {
+      mother: "Anna",
+      father: "no data",
+    },
+  };
+
+  const user2: User<string> = {
+    login: "admin",
+    age: 55,
+    parents: "",
+  };
+}
