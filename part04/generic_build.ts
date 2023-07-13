@@ -19,3 +19,20 @@
     //state.data = "abc"; // Cannot assign to 'data' because it is a read-only property.ts(2540)
   }
 }
+
+{
+  interface IState {
+    data: {
+      name: string;
+    };
+    tag: string;
+  }
+
+  function action(state: IState) {
+    state.data.name = "abc"; // Ok
+  }
+
+  function actionReadonly(state: Readonly<IState>) {
+    state.data.name = "abc"; // Ok
+  }
+}
