@@ -36,3 +36,36 @@
     state.data.name = "abc"; // Ok
   }
 }
+
+{
+  // Generic partial
+
+  interface IState {
+    // (property) IState.data: { name: string; }
+    data: {
+      name: string;
+    };
+    tag: string; // (property) IState.tag: string
+  }
+
+  const state: IState = {
+    data: { name: "str1" },
+    tag: "tag1",
+  };
+
+  state.data;
+  state.tag;
+
+  const statePartial1: Partial<IState> = {
+    // (property) data?: { name: string;} | undefined
+    data: {
+      name: "John",
+    },
+  };
+  statePartial1.data; // data?
+  statePartial1.tag; // tag?
+
+  const statePartial2: Partial<IState> = {};
+  statePartial2.data; // data?
+  statePartial2.tag; // tag?
+}
