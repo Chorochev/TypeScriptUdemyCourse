@@ -69,3 +69,18 @@
   statePartial2.data; // data?
   statePartial2.tag; // tag?
 }
+
+{
+  // Generic Required
+  interface IState {
+    data: {
+      name: string;
+    };
+    tag?: string; // (property) IState.tag?: string | undefined
+  }
+
+  const strictState: Required<IState> = {
+    data: { name: "Max" },
+    tag: "str", // (property) tag: string
+  };
+}
