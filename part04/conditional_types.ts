@@ -103,4 +103,9 @@
 
   type t1 = GetFirstType<number>; // type t1 = number
   type t2 = GetFirstType<number[]>; // type t2 = number
+
+  // an interview task
+  type Ex = GetFirstType<number[]>; // type Ex = number
+  type ToArray<Type> = Type extends any ? Type[] : never;
+  type ExArray = ToArray<Ex | string>; // type ExArray = number[] | string[]
 }
