@@ -33,4 +33,21 @@
       manufactured: new Date("2022-05-24T12:00:00"),
     },
   ];
+
+  interface IPhonesManufacturedAfterDate<TCompany>
+    extends IMobilePhone<TCompany> {
+    initialDate: string;
+  }
+
+  function filterPhonesByDate<T>(
+    phones: IMobilePhone<T>[],
+    key: string,
+    initial: string
+  ): IPhonesManufacturedAfterDate<T>[] {
+    const result: IPhonesManufacturedAfterDate<T>[] = [];
+
+    return result;
+  }
+
+  console.log(filterPhonesByDate(phones, "manufactured", "2022-01-01"));
 }
