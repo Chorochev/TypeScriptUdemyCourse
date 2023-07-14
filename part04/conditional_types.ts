@@ -33,9 +33,7 @@
   };
 
   console.log(`${data1.weight} ${data2.calories}`);
-}
 
-{
   interface User<T extends "created" | Date> {
     created: T extends "created" ? "created" : Date;
   }
@@ -47,4 +45,42 @@
   const user2: User<Date> = {
     created: new Date(),
   };
+
+  function calculateDailyCalories(str: string): IDataFromUser;
+  function calculateDailyCalories(num: number): IDataFromBase;
+  function calculateDailyCalories(
+    numOrStr: string | number
+  ): IDataFromUser | IDataFromBase {
+    if (typeof numOrStr === "string") {
+      const obj: IDataFromUser = { weight: numOrStr };
+      return obj;
+    } else {
+      const obj: IDataFromBase = { calories: numOrStr };
+      return obj;
+    }
+  }
+
+  function calculateDailyCalories2<T extends string | number>(
+    numOrStr: T
+  ): T extends string ? IDataFromUser : IDataFromBase {
+    if (typeof numOrStr === "string") {
+      const obj: IDataFromUser = { weight: numOrStr };
+      return obj as T extends string ? IDataFromUser : IDataFromBase;
+    } else {
+      const obj: IDataFromBase = { calories: numOrStr };
+      return obj as T extends string ? IDataFromUser : IDataFromBase;
+    }
+  }
+
+  function calculateDailyCalories3<T extends string | number>(
+    numOrStr: T
+  ): T extends string ? IDataFromUser : IDataFromBase {
+    if (typeof numOrStr === "string") {
+      const obj: IDataFromUser = { weight: numOrStr };
+      return obj as TFromUserOrFromBase<T>;
+    } else {
+      const obj: IDataFromBase = { calories: numOrStr };
+      return obj as TFromUserOrFromBase<T>;
+    }
+  }
 }
