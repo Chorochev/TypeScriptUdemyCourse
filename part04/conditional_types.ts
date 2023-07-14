@@ -96,3 +96,11 @@
   type t2 = GetStringType<"world">; // type t2 = "world"
   type t3 = GetStringType<string>; // type t3 = string
 }
+
+// infer
+{
+  type GetFirstType<T> = T extends Array<infer First> ? First : T;
+
+  type t1 = GetFirstType<number>; // type t1 = number
+  type t2 = GetFirstType<number[]>; // type t2 = number
+}
