@@ -98,3 +98,23 @@
   };
   type CustomCurrenciesReadOnly3 = CreateCustomCurrReadOnly3<Currencies>;
 }
+
+{
+  interface Currencies {
+    usa: "usd";
+    china?: "cny";
+    ukraine: "uah";
+    readonly kz: "tenge";
+  }
+  // - readonly ?
+  type CreateCustomCurrReadOnly<T> = {
+    -readonly [P in keyof T]-?: string;
+  };
+  type CustomCurrenciesReadOnly = CreateCustomCurrReadOnly<Currencies>;
+  const curr1: CustomCurrenciesReadOnly = {
+    usa: "usd",
+    china: "cny",
+    ukraine: "uah",
+    kz: "tenge",
+  };
+}
