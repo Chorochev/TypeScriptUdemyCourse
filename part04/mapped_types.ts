@@ -1,5 +1,17 @@
 // Mapped types
 {
+  type OnlyBoolsAndNumbers = {
+    [key: string]: boolean | number;
+  };
+
+  const conforms: OnlyBoolsAndNumbers = {
+    del: true,
+    rodney: false,
+    age: 53,
+  };
+}
+
+{
   type Currencies = {
     usa: "usd";
     china: "cny";
