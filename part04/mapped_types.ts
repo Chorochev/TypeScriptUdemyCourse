@@ -37,3 +37,32 @@
     role: "admin",
   };
 }
+
+{
+  type Currencies = {
+    usa: "usd";
+    china: "cny";
+    ukraine: "uah";
+    kz: "tenge";
+  };
+
+  type CreateCustomCurr<T> = {
+    [P in keyof T]: string;
+  };
+
+  type CustomCurrencies = CreateCustomCurr<Currencies>;
+  // =>
+  //   type CustomCurrencies = {
+  //     usa: string;
+  //     china: string;
+  //     ukraine: string;
+  //     kz: string;
+  //   }
+
+  const curr1: CustomCurrencies = {
+    usa: "usd",
+    china: "cny",
+    ukraine: "uah",
+    kz: "tenge",
+  };
+}
