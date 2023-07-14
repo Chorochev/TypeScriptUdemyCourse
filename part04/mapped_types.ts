@@ -78,6 +78,23 @@
   type CreateCustomCurr<T> = {
     [P in keyof T]: string;
   };
-
   type CustomCurrencies = CreateCustomCurr<Currencies>;
+
+  // readonly
+  type CreateCustomCurrReadOnly1<T> = {
+    readonly [P in keyof T]: string;
+  };
+  type CustomCurrenciesReadOnly1 = CreateCustomCurrReadOnly1<Currencies>;
+
+  // readonly ?
+  type CreateCustomCurrReadOnly2<T> = {
+    readonly [P in keyof T]?: string;
+  };
+  type CustomCurrenciesReadOnly2 = CreateCustomCurrReadOnly2<Currencies>;
+
+  // + readonly ?
+  type CreateCustomCurrReadOnly3<T> = {
+    +readonly [P in keyof T]+?: string;
+  };
+  type CustomCurrenciesReadOnly3 = CreateCustomCurrReadOnly3<Currencies>;
 }
