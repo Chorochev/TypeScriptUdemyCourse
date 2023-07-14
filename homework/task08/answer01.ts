@@ -38,30 +38,25 @@
     initialDate: string;
   }
 
-  function filterPhonesByDate<T, K extends keyof T>(
-    phones: T[],
-    key: K,
+  function filterPhonesByDate(
+    phones: IMobilePhone[],
+    key: keyof IMobilePhone,
     initial: string
   ): IPhonesManufacturedAfterDate[] {
-    const result: IPhonesManufacturedAfterDate[] = [];
-    // type TPhoneKeys = keyof IMobilePhone<T>;
-    // const keyType: TPhoneKeys = keyof typeof key;
-    // phones.forEach((element) => {
-    //   console.log(element[key]);
-    // });
-
-    phones.forEach((e) => {
-      if (e[key] == "2022-09-01T00:00:00.000Z") {
-        console.log("Ok");
-      }
-      //   const dt = e[key];
-      //   type tdt = typeof dt;
-      console.log(`${e}  ${e[key]}  ${typeof key}`);
-    });
-
-    // const result = phones.filter((e) => e[key] == "2022-09-01T00:00:00.000Z");
-
-    return result;
+    const localInitialDate = new Date(initial);
+    return phones
+      .filter((element) => {
+        const currentKey = element[key];
+        if (currentKey instanceof Date && currentKey > localInitialDate) {
+          return element;
+        }
+      })
+      .map((element) => {
+        return {
+          ...element,
+          initialDate: initial,
+        };
+      });
   }
 
   console.log(filterPhonesByDate(phones, "manufactured", "2022-01-01"));
