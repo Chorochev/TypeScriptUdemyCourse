@@ -84,3 +84,15 @@
     }
   }
 }
+
+{
+  type GetStringType<T extends "hello" | "world" | string> = T extends "hello"
+    ? "hello"
+    : T extends "world"
+    ? "world"
+    : string;
+
+  type t1 = GetStringType<"hello">; // type t1 = "hello"
+  type t2 = GetStringType<"world">; // type t2 = "world"
+  type t3 = GetStringType<string>; // type t3 = string
+}
