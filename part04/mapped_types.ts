@@ -9,6 +9,10 @@
     rodney: false,
     age: 53,
   };
+
+  type OptionsFlags<Type> = {
+    [Property in keyof Type]: boolean;
+  };
 }
 
 {
