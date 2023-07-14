@@ -1,16 +1,16 @@
 {
-  interface IPhone<TCompany> {
-    company: TCompany;
+  interface IPhone {
+    company: string;
     number: number;
   }
 
-  interface IMobilePhone<TCompany> extends IPhone<TCompany> {
+  interface IMobilePhone extends IPhone {
     size: string;
-    companyPartner: TCompany;
+    companyPartner: IPhone["company"];
     manufactured: Date;
   }
 
-  const phones: IMobilePhone<string>[] = [
+  const phones: IMobilePhone[] = [
     {
       company: "Nokia",
       number: 1285637,
@@ -34,8 +34,7 @@
     },
   ];
 
-  interface IPhonesManufacturedAfterDate<TCompany>
-    extends IMobilePhone<TCompany> {
+  interface IPhonesManufacturedAfterDate extends IMobilePhone {
     initialDate: string;
   }
 
@@ -43,8 +42,8 @@
     phones: T[],
     key: K,
     initial: string
-  ): IPhonesManufacturedAfterDate<T>[] {
-    const result: IPhonesManufacturedAfterDate<T>[] = [];
+  ): IPhonesManufacturedAfterDate[] {
+    const result: IPhonesManufacturedAfterDate[] = [];
     // type TPhoneKeys = keyof IMobilePhone<T>;
     // const keyType: TPhoneKeys = keyof typeof key;
     // phones.forEach((element) => {
@@ -52,19 +51,12 @@
     // });
 
     phones.forEach((e) => {
-      // if(e[key] == "2022-09-01T00:00:00.000Z"){
-      //     result.push({
-      //         company: e.company,
-      //         number: 4552833,
-      //         size: "5.7",
-      //         companyPartner: "no data",
-      //         manufactured: new Date("2022-05-24T12:00:00"),
-      //         initialDate: "string"
-      //     })
-      // }
-      const dt = e[key];
-      type tdt = typeof dt;
-      console.log(`${e}  ${e[key]}  ${typeof key} ${dt}`);
+      if (e[key] == "2022-09-01T00:00:00.000Z") {
+        console.log("Ok");
+      }
+      //   const dt = e[key];
+      //   type tdt = typeof dt;
+      console.log(`${e}  ${e[key]}  ${typeof key}`);
     });
 
     // const result = phones.filter((e) => e[key] == "2022-09-01T00:00:00.000Z");
