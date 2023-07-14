@@ -66,3 +66,18 @@
     kz: "tenge",
   };
 }
+
+{
+  interface Currencies {
+    usa: "usd";
+    china: "cny";
+    ukraine: "uah";
+    kz: "tenge";
+  }
+
+  type CreateCustomCurr<T> = {
+    [P in keyof T]: string;
+  };
+
+  type CustomCurrencies = CreateCustomCurr<Currencies>;
+}
