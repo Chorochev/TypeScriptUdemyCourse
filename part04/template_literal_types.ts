@@ -45,14 +45,14 @@
   //Capitalize - Convert first character of string literal type to uppercase
 
   type CreateCustomCurr3<T> = {
-    [P in keyof T as `custom${Capitalize<string & P>}}`]: string;
+    [P in keyof T as `custom${Capitalize<string & P>}`]: string;
   };
   type CustomCurrencies3 = CreateCustomCurr3<Currencies>;
   //   type CustomCurrencies3 = {
-  //     "customUsa}": string;
-  //     "customChina}"?: string | undefined;
-  //     "customUkraine}": string;
-  //     "customKz}": string;
+  //     "customUsa": string;
+  //     "customChina"?: string | undefined;
+  //     "customUkraine": string;
+  //     "customKz": string;
   //   }
 }
 

@@ -59,3 +59,34 @@
   type Direction = "In" | "Out" | "swipe";
   type ExtractType = Extract<MyAnimation | Direction, "swipe">; // type ExtractType = "swipe"
 }
+
+{
+  interface Currencies {
+    usa: "usd";
+    china: "cny";
+    ukraine: "uah";
+    kz: "tenge";
+  }
+  type PlayersNames = "alex" | "john";
+  type CreateCustomCurr<T> = {
+    [P in keyof T as `custom${Capitalize<string & P>}`]: string;
+  };
+  type CustomCurrencies = CreateCustomCurr<Currencies>;
+  // Record
+  type GameDataCurr = Record<PlayersNames, CustomCurrencies>;
+
+  const gameData: GameDataCurr = {
+    alex: {
+      customChina: "qqqq",
+      customKz: "ww",
+      customUkraine: "ttt",
+      customUsa: "yyyy",
+    },
+    john: {
+      customChina: "qqqq",
+      customKz: "ww",
+      customUkraine: "ttt",
+      customUsa: "yyyy",
+    },
+  };
+}
