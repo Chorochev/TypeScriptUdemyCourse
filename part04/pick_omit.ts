@@ -46,3 +46,16 @@
   // Exclude: type Exclude<T, U> = T extends U ? never : T
   type CountriesWithoutUSA = Exclude<keyof Currencies, "usa">; // type CountriesWithoutUSA = "china" | "ukraine" | "kz"
 }
+
+{
+  // Extract
+  type MyAnimation = "fade" | "swipe"; // type MyAnimation = "fade" | "swipe"
+  type ExtractType = Extract<MyAnimation, "swipe">; // type ExtractType = "swipe"
+}
+
+{
+  // Extract
+  type MyAnimation = "fade" | "swipe";
+  type Direction = "In" | "Out" | "swipe";
+  type ExtractType = Extract<MyAnimation | Direction, "swipe">; // type ExtractType = "swipe"
+}
