@@ -24,6 +24,8 @@
 
 {
   // Exlude
+  // type Exclude<T, U> = T extends U ? never : T;
+
   type MyAnimation = "fade" | "swipe"; // type MyAnimation = "fade" | "swipe"
   type ExludeMyType1 = Exclude<MyAnimation, "swipe">; // type ExludeMyType = "fade"
 
