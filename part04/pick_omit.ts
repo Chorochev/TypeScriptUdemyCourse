@@ -21,3 +21,28 @@
   //     ukraine: "uah";
   //   }
 }
+
+{
+  // Exlude
+  type MyAnimation = "fade" | "swipe"; // type MyAnimation = "fade" | "swipe"
+  type ExludeMyType1 = Exclude<MyAnimation, "swipe">; // type ExludeMyType = "fade"
+
+  type Direction = "In" | "Out"; // type Direction = "In" | "Out"
+  type MyNewAnimation = `${MyAnimation}${Direction}`; // type MyNewAnimation = "fadeIn" | "swipeIn" | "fadeOut" | "swipeOut"
+
+  type ExludeMyType2 = Exclude<MyNewAnimation, "fadeOut">; // type ExludeMyType2 = "fadeIn" | "swipeIn" | "swipeOut"
+  type ExludeMyType3 = Exclude<MyNewAnimation, "fadeOut" | "swipeIn">; // type ExludeMyType3 = "fadeIn" | "swipeOut"
+}
+
+{
+  // Exlude
+  interface Currencies {
+    usa: "usd";
+    china: "cny";
+    ukraine: "uah";
+    kz: "tenge";
+  }
+
+  // Exclude: type Exclude<T, U> = T extends U ? never : T
+  type CountriesWithoutUSA = Exclude<keyof Currencies, "usa">; // type CountriesWithoutUSA = "china" | "ukraine" | "kz"
+}
