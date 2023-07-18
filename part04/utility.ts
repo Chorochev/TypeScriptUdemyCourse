@@ -32,3 +32,12 @@
   // console.log(CalculateRT); // 'CalculateRT' only refers to a type, but is being used as a value here.ts(2693)
   console.log(param1);
 }
+
+{
+  // Type 'string' does not satisfy the constraint '(...args: any) => any'.ts(2344)
+  // type T7 = ReturnType<string>;
+  //
+  // Type 'Function' does not satisfy the constraint '(...args: any) => any'.
+  // Type 'Function' provides no match for the signature '(...args: any): any'.ts(2344)
+  // type T8 = ReturnType<Function>;
+}
