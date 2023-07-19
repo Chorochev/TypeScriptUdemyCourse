@@ -1,4 +1,5 @@
 // implements
+// class C implements A, B { ... }
 {
   interface IUser {
     login: string;
