@@ -25,3 +25,10 @@
     const firstBox = new Box(100, 200);
     console.log(firstBox);
 }
+{
+    class User {
+    }
+    const ivan = new User();
+    ivan.name = "Ivan";
+    console.log(ivan);
+}
