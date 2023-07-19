@@ -39,3 +39,14 @@
   const user2 = new UserForm2();
   console.log(user2); // UserForm2 { login: 'admin', password: '123', valid: false, token: 500 }
 }
+
+{
+  interface IAnimal {}
+  interface IOviparous {}
+
+  class Bird implements IAnimal, IOviparous {}
+
+  interface IFlyable {}
+
+  class Eagle extends Bird implements IFlyable {}
+}
