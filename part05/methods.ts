@@ -1,4 +1,4 @@
-// methods (ts)
+// methods (ts) getter, setter
 {
   class Box {
     width: number;
