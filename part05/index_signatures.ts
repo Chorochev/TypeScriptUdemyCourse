@@ -42,3 +42,19 @@
   console.log(c.check("test1")); // true
   console.log(c.check("test2")); // false
 }
+
+{
+  interface Identifier1 {
+    [identifier: string]: string;
+  }
+
+  // or
+  interface Identifier2 {
+    [key: number]: string;
+  }
+
+  // or
+  interface Identifier3 {
+    [name: number]: string;
+  }
+}
