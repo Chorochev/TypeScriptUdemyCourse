@@ -3,6 +3,7 @@
   class Box {
     width: number;
     height: number;
+    height2: number = 500;
     volume: number | undefined;
     content: string | undefined;
 
