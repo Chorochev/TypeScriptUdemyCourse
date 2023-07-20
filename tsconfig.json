@@ -106,5 +106,9 @@
     // "skipDefaultLibCheck": true,                      /* Skip type checking .d.ts files that are included with TypeScript. */
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
-  "files": ["part05/base/baseClasses.ts", "part05/private.ts"]
+  "files": [
+    "part05/base/baseClasses.ts",
+    "part05/private.ts",
+    "part05/abstract.ts"
+  ]
 }
