@@ -29,3 +29,15 @@ tsc --init
 ## Execute a script as `node` + `tsc`.
 
 ts-node script.ts
+
+## Update typescript
+
+npm install -g typescript
+
+## Version
+
+npm info typescript version
+
+## Get root folder
+
+npm root -g
