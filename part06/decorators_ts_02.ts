@@ -1,5 +1,4 @@
 // decorators in ts
-// tsconfig.json => "strict": false /* Enable all strict type-checking options. */,
 {
   interface ICar {
     fuel: string;
@@ -8,22 +7,28 @@
   }
 
   // @ts-ignore comment
-  @decorCloseCar
+  @decorCloseCarGeneric
   class myCar implements ICar {
     fuel: string = "50%";
-    open: boolean;
-    freeSeats: number;
+    open: boolean = true;
+    freeSeats: number = 0;
     isOpen() {
       console.log(`fuel: ${this.fuel}`);
       return this.open ? "open" : "close";
     }
   }
 
-  // decorator of class
-  function decorCloseCar(constructor: Function) {
-    constructor.prototype.open = false;
+  // @ts-ignore comment
+  function decorCloseCarGeneric<T extends { new (...args: any[]): {} }>(
+    constructor: T
+  ) {
+    return class extends constructor {
+      open = false;
+    };
   }
 
   const car = new myCar();
   console.log(car.isOpen());
+  // fuel: 50%
+  // close
 }
