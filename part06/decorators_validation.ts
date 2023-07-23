@@ -1,5 +1,6 @@
 // Decorators, validations
 // Parameter Decorators
+// !!! Everything don't work here because old style
 {
   interface ICar {
     fuel: string;
