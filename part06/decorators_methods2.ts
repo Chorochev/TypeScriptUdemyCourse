@@ -8,7 +8,9 @@
     freeSeats: number;
   }
 
+  // @ts-ignore comment
   @changeDoorStatus7(false)
+  // @ts-ignore comment
   @changeAmountOfFuel7(95)
   class myCar implements ICar {
     fuel: string = "50%";
@@ -29,6 +31,7 @@
   // 	};
   // }
 
+  // @ts-ignore comment
   function checkAmountOfFuel7<T, A extends any[], R>(
     target: (this: T, ...args: A) => R,
     context: ClassMethodDecoratorContext<T, (this: T, ...args: A) => R>
@@ -40,6 +43,7 @@
     };
   }
 
+  // @ts-ignore comment
   function changeDoorStatus7(status: boolean) {
     console.log("door init");
     return <T extends { new (...args: any[]): {} }>(
@@ -53,6 +57,7 @@
     };
   }
 
+  // @ts-ignore comment
   function changeAmountOfFuel7(amount: number) {
     console.log("fuel init");
     return <T extends { new (...args: any[]): {} }>(
