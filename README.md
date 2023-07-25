@@ -46,4 +46,6 @@ npm root -g
 
 # Installation in current directory
 
+link: https://github.com/rbuckton/reflect-metadata
+
 npm install reflect-metadata
