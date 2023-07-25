@@ -41,3 +41,9 @@ npm info typescript version
 ## Get root folder
 
 npm root -g
+
+## Metadata Reflection API
+
+# Installation
+
+npm install reflect-metadata
