@@ -65,18 +65,7 @@ import "reflect-metadata";
       createdAt = new Date();
     };
   }
-  // without the decorator: ShippingContainer { width: 10, length: 100, height: 10 }
-  // with the decorator @decor_createdAt:
-  // ShippingContainer { width: 10, length: 100, height: 10, createdAt: ... }
 
-  // 2. Необходимо создать декораторы IsInt, Min и Max, которые будут валидировать свойства класса
-  // Применение смотрите в самом классе. При ошибке выполняйте throw new Error
-  // IsInt проверяет на то, что было передано целое число
-
-  // 3. Необходимо создать декоратор метода, который при каждом запуске метода будет создавать
-  // ИЛИ менять содержимое свойства самого класса lastCalculation
-  // Как значение записывать в него строку "Последний подсчет ${method} был ${Дата}",
-  // Где method - это название подсчета, который передается при вызове декоратора (площадь или объем)
   function decor_fixLastCalculation2(method: string) {
     return (
       target: Object,
