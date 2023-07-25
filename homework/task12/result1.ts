@@ -30,10 +30,14 @@
       this.height = height;
     }
 
+    // @ts-ignore comment
+    @decor_fixLastCalculation("calcArea")
     calcArea(multiply?: number): number {
       return this.width * this.length * (multiply ? multiply : 1);
     }
 
+    // @ts-ignore comment
+    @decor_fixLastCalculation("calcVolume")
     calcVolume(multiply?: number) {
       return this.width * this.length * this.height * (multiply ? multiply : 1);
     }
@@ -41,7 +45,7 @@
 
   // 1. Необходимо создать декоратор класса, который будет записывать дату создания контейнера
   // Простыми словами - создавать в нем новое свойство createdAt с датой создания экземпляра
-  // Add new property
+  // Add new property to class
   function decor_createdAt<T extends { new (...args: any[]): {} }>(
     constructor: T
   ) {
@@ -61,10 +65,29 @@
   // ИЛИ менять содержимое свойства самого класса lastCalculation
   // Как значение записывать в него строку "Последний подсчет ${method} был ${Дата}",
   // Где method - это название подсчета, который передается при вызове декоратора (площадь или объем)
+  function decor_fixLastCalculation(method: string) {
+    return (
+      target: Object,
+      proprrtyKey: string | symbol,
+      descriptor: PropertyDescriptor
+    ): PropertyDecorator | void => {
+      const oldMethod = descriptor.value;
+
+      descriptor.value = function (this: any, ...args: any[]) {
+        this.lastCalculation = `Последний подсчет ${method} был ${new Date()}`;
+        return oldMethod.apply(this, args);
+      };
+    };
+  }
 
   const container = new ShippingContainer(10, 100, 10);
+  container.width = 3;
+  container.height = 5;
   console.log(container);
-  //   container.width = 0;
-  //   container.height = 5;
-  //   console.log(container.calcVolume());
+  console.log(`calcArea(5) => ${container.calcArea(5)}`);
+  // @ts-ignore comment
+  console.log(container.lastCalculation);
+  console.log(`calcVolume(7) => ${container.calcVolume(7)}`);
+  // @ts-ignore comment
+  console.log(container.lastCalculation);
 }
