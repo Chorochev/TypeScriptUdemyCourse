@@ -151,17 +151,18 @@ import "reflect-metadata";
     return true;
   }
 
+  function decor_finalValidation(obj: unknown) {
+    if (obj && typeof obj === "object" && !Array.isArray(obj)) {
+      for (let key in obj) {
+        decor_validate2(obj, key, obj[key as keyof typeof obj]);
+      }
+    }
+  }
+
   // const container1 = new ShippingContainer(0, 100, 10); // Error: width: "0" less than 1.
   // const container2 = new ShippingContainer(4, 100, 10); // Error: height: "10" more than 8.
   const container3 = new ShippingContainer(4, 100, 6); // Ok
-
-  //   container.width = -1;
-  //   container.height = 5;
-  //   console.log(container);
-  //   console.log(`calcArea(5) => ${container.calcArea(5)}`);
-  //   // @ts-ignore comment
-  //   console.log(container.lastCalculation);
-  //   console.log(`calcVolume(7) => ${container.calcVolume(7)}`);
-  //   // @ts-ignore comment
-  //   console.log(container.lastCalculation);
+  decor_finalValidation(container3); // ok
+  container3.width = 0;
+  // decor_finalValidation(container3); // Error: width: "0" less than 1.
 }
