@@ -44,6 +44,6 @@ npm root -g
 
 ## Metadata Reflection API
 
-# Installation
+# Installation in current directory
 
 npm install reflect-metadata
