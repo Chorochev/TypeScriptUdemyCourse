@@ -11,17 +11,24 @@
   // @ts-ignore comment
   @decor_createdAt
   class ShippingContainer implements ICuboid {
-    // @IsInt()
-    // @Min(1)
+    // @ts-ignore comment
+    @decor_isInt()
+    // @ts-ignore comment
+    @decor_Min(1)
     width: number;
 
-    // @IsInt()
-    // @Min(1)
+    // @ts-ignore comment
+    @decor_isInt()
+    // @ts-ignore comment
+    @decor_Min(1)
     length: number;
 
-    // @IsInt()
-    // @Min(1)
-    // @Max(8)
+    // @ts-ignore comment
+    @decor_isInt()
+    // @ts-ignore comment
+    @decor_Min(1)
+    // // @ts-ignore comment
+    // @decor_Max(8)
     height: number;
 
     constructor(width: number, length: number, height: number) {
@@ -80,8 +87,91 @@
     };
   }
 
-  const container = new ShippingContainer(10, 100, 10);
-  container.width = 3;
+  function decor_isInt() {
+    return function (target: Object, proprrtyKey: string | symbol) {
+      let symbol = Symbol();
+      const getter = function (this: any) {
+        return this[symbol];
+      };
+
+      const setter = function (this: any, newAmount: unknown) {
+        console.log(`isint => setter(${newAmount})`);
+        if (typeof newAmount === "number" && Number.isInteger(newAmount)) {
+          this[symbol] = newAmount;
+        } else {
+          throw new Error(`argument "${newAmount}" isn't integer`);
+        }
+      };
+
+      Object.defineProperty(target, proprrtyKey, {
+        get: getter,
+        set: setter,
+        enumerable: true,
+        configurable: true,
+      });
+    };
+  }
+
+  function decor_Min(limit: number) {
+    return function (target: Object, proprrtyKey: string | symbol) {
+      let symbol = Symbol();
+      const getter = function (this: any) {
+        return this[symbol];
+      };
+
+      const setter = function (this: any, newAmount: unknown) {
+        console.log(`min => setter(${newAmount})`);
+        if (typeof newAmount === "number" && Number.isInteger(newAmount)) {
+          if (newAmount > limit) {
+            this[symbol] = newAmount;
+          } else {
+            throw new Error(`"${newAmount}" less than a limit = ${newAmount}`);
+          }
+        } else {
+          throw new Error(`argument "${newAmount}" isn't integer`);
+        }
+      };
+
+      Object.defineProperty(target, proprrtyKey, {
+        get: getter,
+        set: setter,
+        enumerable: true,
+        configurable: true,
+      });
+    };
+  }
+
+  function decor_Max(limit: number) {
+    return function (target: Object, proprrtyKey: string | symbol) {
+      let symbol = Symbol();
+      const getter = function (this: any) {
+        return this[symbol];
+      };
+
+      const setter = function (this: any, newAmount: unknown) {
+        console.log(`max => setter(${newAmount})`);
+        if (typeof newAmount === "number" && Number.isInteger(newAmount)) {
+          if (newAmount < limit) {
+            this[symbol] = newAmount;
+          } else {
+            throw new Error(`"${newAmount}" more than a limit = ${newAmount}`);
+          }
+        } else {
+          throw new Error(`argument "${newAmount}" isn't integer`);
+        }
+      };
+
+      Object.defineProperty(target, proprrtyKey, {
+        get: getter,
+        set: setter,
+        enumerable: true,
+        configurable: true,
+      });
+    };
+  }
+
+  const container = new ShippingContainer(0, 100, 10);
+  container.width = -1;
   container.height = 5;
   console.log(container);
   console.log(`calcArea(5) => ${container.calcArea(5)}`);
