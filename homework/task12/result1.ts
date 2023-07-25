@@ -1,3 +1,4 @@
+// ts-node .\result1.ts
 {
   interface ICuboid {
     width: number;
