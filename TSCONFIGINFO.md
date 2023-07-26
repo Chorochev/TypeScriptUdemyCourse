@@ -64,3 +64,24 @@ For example, this is incorrect JavaScript according to the parseFloat type defin
 
     // parseFloat only takes a string
     module.exports.pi = parseFloat(3.142);
+
+## Remove Comments - removeComments
+
+Strips all comments from TypeScript files when converting into JavaScript. Defaults to false.
+
+# Emit
+
+## Declaration - declaration
+
+Generate .d.ts files for every TypeScript or JavaScript file inside your project. These .d.ts files are type definition files which describe the external API of your module. With .d.ts files, tools like TypeScript can provide intellisense and accurate types for un-typed code.
+
+## Declaration Dir - declarationDir
+
+Offers a way to configure the root directory for where declaration files are emitted.
+
+    {
+        "compilerOptions": {
+            "declaration": true,
+            "declarationDir": "./types"
+        }
+    }
