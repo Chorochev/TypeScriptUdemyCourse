@@ -1,14 +1,14 @@
-"use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
-const queue_1 = require("./queue");
+import { underFlow } from "./queue.js";
 class ArrayQueue {
-    queue = [];
+    constructor() {
+        this.queue = [];
+    }
     enqueue(item) {
         this.queue.push(item);
     }
     dequeue() {
         if (this.isEmpty()) {
-            throw new Error(queue_1.underFlow);
+            throw new Error(underFlow);
         }
         return this.queue.shift();
     }
@@ -26,9 +26,8 @@ class ArrayQueue {
     }
 }
 class Stack {
-    stack = [];
-    limit;
     constructor(limit = Number.MAX_VALUE) {
+        this.stack = [];
         this.limit = limit;
     }
     push(value) {
