@@ -28,7 +28,7 @@ Specifies an allowlist of files to include in the program. An error occurs if an
 Specifies an array of filenames or patterns to include in the program. These filenames are resolved relative to the directory containing the tsconfig.json file.
 
     {
-    "include": ["src/**/*", "tests/**/*"]
+        "include": ["src/**/*", "tests/**/*"]
     }
 
 ## Exclude - exclude
@@ -38,11 +38,11 @@ Important: exclude only changes which files are included as a result of the incl
 It is not a mechanism that prevents a file from being included in the codebase - it simply changes what the include setting finds.
 
     {
-    "include": [
-        "src/**/*",
-        "tests/**/*"
-    ],
-    "exclude": ["tests/test.ts"]
+        "include": [
+            "src/**/*",
+            "tests/**/*"
+        ],
+        "exclude": ["tests/test.ts"]
     }
 
 ## Out Dir - outDir
@@ -100,7 +100,13 @@ in ts-file:
 
 Allow JavaScript files to be imported inside your project, instead of just .ts and .tsx files. For example, this JS file:
 
-    "allowJs": true,
+    {
+        "compilerOptions": {
+            "allowJs": true,
+        }
+    }
+
+in ts-file:
 
     // @filename: card.js
     export const defaultCardDeck = "Heart";
@@ -110,7 +116,13 @@ Allow JavaScript files to be imported inside your project, instead of just .ts a
 Works in tandem with allowJs. When checkJs is enabled then errors are reported in JavaScript files. This is the equivalent of including // @ts-check at the top of all JavaScript files which are included in your project.
 For example, this is incorrect JavaScript according to the parseFloat type definition which comes with TypeScript:
 
-    "checkJs": true,
+    {
+        "compilerOptions": {
+            "checkJs": true,
+        }
+    }
+
+in ts-file:
 
     // parseFloat only takes a string
     module.exports.pi = parseFloat(3.142);
@@ -167,7 +179,7 @@ in ts-file:
         console.log("even");
 
 ```diff
-- Fallthrough case in switch.
+-Fallthrough case in switch.
 ```
 
         case 1:
