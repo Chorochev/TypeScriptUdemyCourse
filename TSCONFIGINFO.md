@@ -6,6 +6,14 @@
 
 # Options
 
+## Target - target
+
+Modern browsers support all ES6 features, so ES6 is a good choice. You might choose to set a lower target if your code is deployed to older environments, or a higher target if your code is guaranteed to run in newer environments.
+
+    "compilerOptions": {
+        "target": "ES2022"
+    }
+
 ## files
 
 Specifies an allowlist of files to include in the program. An error occurs if any of the files can’t be found.
@@ -42,7 +50,49 @@ It is not a mechanism that prevents a file from being included in the codebase -
 If specified, .js (as well as .d.ts, .js.map, etc.) files will be emitted into this directory. The directory structure of the original source files is preserved; see rootDir if the computed root is not what you intended.
 If not specified, .js files will be emitted in the same directory as the .ts files they were generated from:
 
-    "outDir": "./",
+    {
+        "compilerOptions": {
+            "outDir": "./src",
+        }
+    }
+
+## Root Dir - rootDir
+
+Default: The longest common path of all non-declaration input files. If composite is set, the default is instead the directory containing the tsconfig.json file.
+When TypeScript compiles files, it keeps the same directory structure in the output directory as exists in the input directory.
+
+    {
+        "compilerOptions": {
+            "rootDir": "./src",
+        }
+    }
+
+## Root Dirs - rootDirs
+
+Using rootDirs, you can inform the compiler that there are many “virtual” directories acting as a single root. This allows the compiler to resolve relative module imports within these “virtual” directories, as if they were merged in to one directory.
+
+    {
+        "compilerOptions": {
+            "rootDirs": ["src/views", "generated/templates/views"]
+        }
+    }
+
+# Paths - paths
+
+A series of entries which re-map imports to lookup locations relative to the baseUrl if set, or to the tsconfig file itself otherwise. There is a larger coverage of paths in the handbook.
+paths lets you declare how TypeScript should resolve an import in your require/imports.
+
+    {
+        "compilerOptions": {
+            "paths": {
+            "jquery": ["./vendor/jquery/dist/jquery"]
+            }
+        }
+    }
+
+in ts-file:
+
+    import "jquery"
 
 # JavaScript Support
 
@@ -85,3 +135,43 @@ Offers a way to configure the root directory for where declaration files are emi
             "declarationDir": "./types"
         }
     }
+
+# Type Checking
+
+## Strict - strict
+
+The strict flag enables a wide range of type checking behavior that results in stronger guarantees of program correctness. Turning this on is equivalent to enabling all of the strict mode family options, which are outlined below. You can then turn off individual strict mode family checks as needed.
+Future versions of TypeScript may introduce additional stricter checking under this flag, so upgrades of TypeScript might result in new type errors in your program. When appropriate and possible, a corresponding flag will be added to disable that behavior.
+
+    {
+        "compilerOptions": {
+            "strict": true
+        }
+    }
+
+## No Fallthrough Cases In Switch - noFallthroughCasesInSwitch
+
+Report errors for fallthrough cases in switch statements. Ensures that any non-empty case inside a switch statement includes either break, return, or throw. This means you won’t accidentally ship a case fallthrough bug.
+
+    {
+        "noFallthroughCasesInSwitch": true,
+    }
+
+in ts-file:
+
+    const a: number = 6;
+
+    switch (a) {
+        case 0:
+        Fallthrough case in switch.
+        console.log("even");
+
+```diff
+- Fallthrough case in switch.
+```
+
+        case 1:
+        console.log("odd");
+        break;
+
+}
